@@ -233,7 +233,7 @@ const handleMenuClose = () => {
                   <Typography style={{ fontSize: 14 }}>
                     Settings
                   </Typography>
-
+{/*check*/}
                 </MenuItem>
                 {/* Display User Email Section */}
                 <MenuItem>
