@@ -148,7 +148,9 @@ const AdminDashboard = () => {
                   <TableCell scope="row"> {/* Button to toggle status */}
                     <Button onClick={() => handleToggleStatus(vendor.vendorKey)}
                       variant='contained'
-                      style={{ backgroundColor: vendor.status === 'active' ? 'red' : 'green' }} >
+                      style={{ backgroundColor: vendor.status === 'active' ? 'red' : 'green',
+                                boxShadow: '0 4px 6px rgba(0,0,0,0.8)',
+                      }} >
                       {vendor.status === 'active' ? 'Deactivate' : 'Activate'}
                     </Button>
                   </TableCell>
@@ -156,7 +158,8 @@ const AdminDashboard = () => {
                   <TableCell scope="row">
                     <Button variant="contained"
                       onClick={() => handleClickVendor(vendor.vendorKey)}
-                      style={{ backgroundColor: '#673AB7' }}>
+                      style={{ backgroundColor: '#673AB7',
+                               boxShadow: '0 4px 6px rgba(0,0,0,0.8)'}}>
                       View Services
                     </Button>
                   </TableCell>
