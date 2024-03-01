@@ -78,7 +78,7 @@ const AdminDashboard = () => {
   return (
     <Box sx={{ display: 'flex' }}>
       <MasterHeader />
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1,  }}>
         <DrawerHeader />
 
 
@@ -136,8 +136,9 @@ const AdminDashboard = () => {
                       <Chip label={vendor.status === 'active' ? 'ACTIVE' : 'INACTIVE'}
                         style={{
                           backgroundColor: vendor.status === 'active' ? 'green' : 'red',
-
-                          color: 'white'
+                          color: 'white',
+                          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.8)',
+                          
                         }}
                       ></Chip>
 
