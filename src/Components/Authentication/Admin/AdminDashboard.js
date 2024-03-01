@@ -136,7 +136,7 @@ const AdminDashboard = () => {
                       <Chip label={vendor.status === 'active' ? 'ACTIVE' : 'INACTIVE'}
                         style={{
                           backgroundColor: vendor.status === 'active' ? 'green' : 'red',
-                          color: 'black',
+                          color: 'white',
                           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.8)',
                           
                         }}
