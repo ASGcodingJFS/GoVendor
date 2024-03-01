@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectVendors, fetchVendors, updatedVendorStatus } from '../Redux/VendorSlice';
 import {
   Accordion, Button, Box, Paper, Table, TableBody, TableCell, TableContainer,
-  TableHead, TableRow, Typography, Skeleton, Chip
+  TableHead, TableRow, Typography, Skeleton, Chip, Popover
 } from '@mui/material';
 
 import { AdminPanelSettings, Group, Mail, PendingActions, ToggleOn } from '@mui/icons-material';
@@ -17,14 +17,27 @@ const AdminDashboard = () => {
   const vendors = useSelector(selectVendors);
   const dataFetch = useRef(false);
   const navigate = useNavigate();
+  const [openPopover, setOpenPopover] = useState(null);
 
   const isAdminLoggedIn = localStorage.getItem('isAuthenticated') === 'true' && localStorage.getItem('isAdmin') === 'true';
 
+  const handlePopoverOpen = (event) => {
+
+    setOpenPopover(event.target);
+  }
+
+  const handlePopoverClose = () => {
+
+    setOpenPopover(null);
+
+  }
+
+  const openstate = Boolean(openPopover);
 
   useEffect(() => {
 
     console.log("hello outside if");
-    
+
     if (!dataFetch.current) {
       dispatch(fetchVendors());
       dataFetch.current = true;
@@ -78,7 +91,7 @@ const AdminDashboard = () => {
   return (
     <Box sx={{ display: 'flex' }}>
       <MasterHeader />
-      <Box component="main" sx={{ flexGrow: 1,  }}>
+      <Box component="main" sx={{ flexGrow: 1, }}>
         <DrawerHeader />
 
 
@@ -138,7 +151,7 @@ const AdminDashboard = () => {
                           backgroundColor: vendor.status === 'active' ? 'green' : 'red',
                           color: 'white',
                           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.8)',
-                          
+
                         }}
                       ></Chip>
 
@@ -148,8 +161,9 @@ const AdminDashboard = () => {
                   <TableCell scope="row"> {/* Button to toggle status */}
                     <Button onClick={() => handleToggleStatus(vendor.vendorKey)}
                       variant='contained'
-                      style={{ backgroundColor: vendor.status === 'active' ? 'red' : 'green',
-                                boxShadow: '0 4px 6px rgba(0,0,0,0.8)',
+                      style={{
+                        backgroundColor: vendor.status === 'active' ? 'red' : 'green',
+                        boxShadow: '0 4px 6px rgba(0,0,0,0.8)',
                       }} >
                       {vendor.status === 'active' ? 'Deactivate' : 'Activate'}
                     </Button>
@@ -157,11 +171,38 @@ const AdminDashboard = () => {
 
                   <TableCell scope="row">
                     <Button variant="contained"
+                      aria-owns={openstate ? 'mouse-over-popover' : undefined}
+                      aria-haspopup="true"
+                      onMouseEnter={handlePopoverOpen}
+                      onMouseLeave={handlePopoverClose}
                       onClick={() => handleClickVendor(vendor.vendorKey)}
-                      style={{ backgroundColor: '#673AB7',
-                               boxShadow: '0 4px 6px rgba(0,0,0,0.8)'}}>
+
+                      style={{
+                        backgroundColor: '#673AB7',
+                        boxShadow: '0 4px 6px rgba(0,0,0,0.8)'
+                      }}>
                       View Services
                     </Button>
+                    <Popover
+                      id="mouse-over-popover"
+                      sx={{
+                        pointerEvents: 'none',
+                      }}
+                      open={openstate}
+                      anchorEl={openPopover}
+                      anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                      }}
+                      transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left',
+                      }}
+                      onClose={handlePopoverClose}
+                      disableRestoreFocus
+                    >
+                      <Typography sx={{ p: 1 }}>Click here to view category requests</Typography>
+                    </Popover>
                   </TableCell>
                 </TableRow>
               ))}
