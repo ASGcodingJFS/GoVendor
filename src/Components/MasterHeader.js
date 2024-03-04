@@ -22,7 +22,7 @@ import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 import { Settings } from '@mui/icons-material';
-import { AccountCircle, Person , LogoutRounded} from '@mui/icons-material';
+import { AccountCircle, Person, LogoutRounded } from '@mui/icons-material';
 import { Menu, MenuItem } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -69,7 +69,7 @@ const AppBar = styled(MuiAppBar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  backgroundColor : '#673AB7',
+  backgroundColor: '#673AB7',
   ...(open && {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
@@ -106,12 +106,12 @@ export default function MasterHeader() {
   const dispatch = useDispatch();
   //const history = use
   const { email } = useSelector((state) => state.auth)
-  const { isAdmin }  = useSelector((state) => state.auth)
-//   const vendorKey  = `vendors_${email}`;
+  const { isAdmin } = useSelector((state) => state.auth)
+  //   const vendorKey  = `vendors_${email}`;
 
-//   const vendorDetails = useSelector(state => state.vendors.find(vendor => vendor.vendorKey === vendorKey));
-//   const vendorStatus = vendorDetails ? vendorDetails.status : 'Unknown';
-// console.log("mheader_vendorStatus", vendorStatus);
+  //   const vendorDetails = useSelector(state => state.vendors.find(vendor => vendor.vendorKey === vendorKey));
+  //   const vendorStatus = vendorDetails ? vendorDetails.status : 'Unknown';
+  // console.log("mheader_vendorStatus", vendorStatus);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -140,14 +140,14 @@ export default function MasterHeader() {
 
 
 
-  setAnchorEl(anchorEl ? null : event.currentTarget); // Toggle anchorEl
-};
+    setAnchorEl(anchorEl ? null : event.currentTarget); // Toggle anchorEl
+  };
 
 
-const handleMenuClose = () => {
+  const handleMenuClose = () => {
 
     setAnchorEl(false);
-};
+  };
 
 
   return (
@@ -170,7 +170,7 @@ const handleMenuClose = () => {
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             GoVendor Application
           </Typography>
-          
+
           {isAuthenticated && (
             <>
 
@@ -194,7 +194,7 @@ const handleMenuClose = () => {
               </IconButton>
               <Menu
                 id="menu-appbar"
-                style={{ marginTop: '40px', height : 300, width : '50ch' }}
+                style={{ marginTop: '40px', height: 300, width: '50ch' }}
                 variant='menu'
                 anchorEl={anchorEl}
                 anchorOrigin={{
@@ -206,9 +206,9 @@ const handleMenuClose = () => {
                   vertical: 'top',
                   horizontal: 'right',
                 }}
-                
+
                 getContentAnchorEl={null}
-                open ={Boolean(anchorEl)}
+                open={Boolean(anchorEl)}
                 //open={isMenuOpen}
                 onClose={handleMenuClose}
               >
@@ -232,7 +232,7 @@ const handleMenuClose = () => {
                   <Typography style={{ fontSize: 14 }}>
                     Settings
                   </Typography>
-{/*check*/}
+                  {/*check*/}
                 </MenuItem>
                 {/* Display User Email Section */}
                 <MenuItem>
@@ -251,7 +251,7 @@ const handleMenuClose = () => {
                   <ListItemIcon>
                     <LogoutRounded fontSize='small'></LogoutRounded>
                   </ListItemIcon>
-                  <Typography style={{fontSize : 14}}>Logout
+                  <Typography style={{ fontSize: 14 }}>Logout
                   </Typography></MenuItem>
 
               </Menu>
@@ -267,128 +267,128 @@ const handleMenuClose = () => {
           </IconButton>
         </DrawerHeader>
         <Divider />
-    
+
         <List>
           <ListItem disablePadding sx={{ display: 'block' }}>
             <ListItemButton
-                 sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}    
-              
-            >
-              <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}>
-                <HomeIcon/>
-              </ListItemIcon>
-              <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }}/>
-            </ListItemButton>
-          
-          </ListItem>
-
-          {isAuthenticated && (
-
-<>
-{ isAdmin ? (
-    <>
-
-        <ListItem disablePadding sx={{ display: 'block' }}>
-
-          <ListItemButton
-                sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-            <ListItemIcon
               sx={{
-                minWidth: 0,
-                mr: open ? 3 : 'auto',
-                justifyContent: 'center',
-              }}>
-              <GroupIcon/>
-            </ListItemIcon>
-            <ListItemText primary="Vendors"  sx={{ opacity: open ? 1 : 0 }}/>
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding sx={{ display: 'block' }}>
-
-          <ListItemButton
-                sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}>
-            <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}>
-              <AutoGraphIcon/>
-            </ListItemIcon>
-            <ListItemText primary="Track Activity"  sx={{ opacity: open ? 1 : 0 }}/>
-          </ListItemButton>
-        </ListItem>
-
-    </>
-  ) : (
-    <>
-      <ListItem disablePadding sx={{ display: 'block' }}>
-        <ListItemButton
-            sx={{
                 minHeight: 48,
                 justifyContent: open ? 'initial' : 'center',
                 px: 2.5,
               }}
-            
-              >
-          <ListItemIcon
-                      sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : 'auto',
-                        justifyContent: 'center',
-                      }}
-                      
-                      >
-            <AddTaskIcon/>
-          </ListItemIcon>
-          <ListItemText primary="Add Service"  sx={{ opacity: open ? 1 : 0 }}/>
-        </ListItemButton>
-      </ListItem>
-      <ListItem disablePadding sx={{ display: 'block' }}>
-        <ListItemButton sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
+
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
                 }}>
-          <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : 'auto',
-                justifyContent: 'center',
-              }}>
-            <HomeRepairServiceIcon/>
-          </ListItemIcon>
-          <ListItemText primary="Services"  sx={{ opacity: open ? 1 : 0 }}/>
-        </ListItemButton>
-      </ListItem>
-      
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
 
-    </>
+          </ListItem>
 
-  )}
-</>
-)}
-          </List>
+          {isAuthenticated && (
 
-          {/* <List>
+            <>
+              {isAdmin ? (
+                <>
+
+                  <ListItem disablePadding sx={{ display: 'block' }}>
+
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? 'initial' : 'center',
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : 'auto',
+                          justifyContent: 'center',
+                        }}>
+                        <GroupIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Vendors" sx={{ opacity: open ? 1 : 0 }} />
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding sx={{ display: 'block' }}>
+
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? 'initial' : 'center',
+                        px: 2.5,
+                      }}>
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : 'auto',
+                          justifyContent: 'center',
+                        }}>
+                        <AutoGraphIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Track Activity" sx={{ opacity: open ? 1 : 0 }} />
+                    </ListItemButton>
+                  </ListItem>
+
+                </>
+              ) : (
+                <>
+                  <ListItem disablePadding sx={{ display: 'block' }}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? 'initial' : 'center',
+                        px: 2.5,
+                      }}
+
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : 'auto',
+                          justifyContent: 'center',
+                        }}
+
+                      >
+                        <AddTaskIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Add Service" sx={{ opacity: open ? 1 : 0 }} />
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding sx={{ display: 'block' }}>
+                    <ListItemButton sx={{
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
+                    }}>
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : 'auto',
+                          justifyContent: 'center',
+                        }}>
+                        <HomeRepairServiceIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Services" sx={{ opacity: open ? 1 : 0 }} />
+                    </ListItemButton>
+                  </ListItem>
+
+
+                </>
+
+              )}
+            </>
+          )}
+        </List>
+
+        {/* <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
@@ -412,9 +412,9 @@ const handleMenuClose = () => {
             </ListItem>
           ))}
         </List> */}
-        
+
       </Drawer>
-     
+
     </>
   );
 }
